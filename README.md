@@ -1,4 +1,4 @@
-# Clinical Information Extraction from ICU Admission Diagnoses with a Local LLM
+# Clinical Information Extraction from ICU Admission Diagnoses with a  LLM
 
 Converting free-text admission diagnoses from MIMIC-III into structured clinical categories with Llama 3.1 running locally, then evaluating the output against guideline-based reference labels and a keyword-rule baseline.
 
