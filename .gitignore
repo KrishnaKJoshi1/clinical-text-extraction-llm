@@ -1,0 +1,10 @@
+# Data (MIMIC data use agreement: do not upload)
+*.csv
+*.xlsx
+outputs/
+
+# Python environments and caches
+venv/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
