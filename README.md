@@ -1,12 +1,12 @@
-# Clinical Information Extraction from ICU Admission Diagnoses with a  LLM
+# Clinical Information Extraction from ICU Admission Diagnoses with an LLM
 
-Converting free-text admission diagnoses from MIMIC-III into structured clinical categories with Llama 3.1 running locally, then evaluating the output against guideline-based reference labels and a keyword-rule baseline.
+Converting free-text admission diagnoses from MIMIC-III into structured clinical categories with Llama 3.1, then evaluating the output against guideline-based reference labels and a keyword-rule baseline.
 
-**Clinical NLP · Local LLM Information Extraction · Structured Data Generation · Model Evaluation**
+**Clinical NLP · LLM Information Extraction · Structured Data Generation · Model Evaluation**
 
 ![Python](https://img.shields.io/badge/Python-3.12-1a1a2e?style=flat-square&logo=python&logoColor=white)
 ![Llama](https://img.shields.io/badge/LLM-Llama%203.1%208B-0a3f6e?style=flat-square)
-![Ollama](https://img.shields.io/badge/Runtime-Ollama%20(local)-2ecc71?style=flat-square)
+![Ollama](https://img.shields.io/badge/Runtime-Ollama-2ecc71?style=flat-square)
 ![MIMIC-III](https://img.shields.io/badge/Data-MIMIC--III-e07b39?style=flat-square)
 
 ---
@@ -47,7 +47,7 @@ Each phrase is converted into two structured fields:
 | `S/P FALL` | Injury | No |
 
 **Approach**
-- **Local LLM:** Llama 3.1 8B served through Ollama; the extraction step sends no data to external services
+- **LLM:** Llama 3.1 8B served through Ollama; no data is sent to external services
 - **Prompting:** few-shot prompt with a closed label set, abbreviation definitions and JSON-only output at temperature 0
 - **Validation:** raw responses retained; unparseable or out-of-schema answers recorded as extraction errors instead of being defaulted to "Other"
 - **Efficiency:** extraction runs once per unique phrase, with a checkpoint every 50 phrases
@@ -115,7 +115,7 @@ Data files and outputs containing patient-level rows are excluded under the MIMI
 ## Reproducibility
 
 - **Input:** `admit_diagnosis.csv` with the columns `hadm_id` and `AdmitDiagnosis`
-- **Model:** local inference requires Ollama with `llama3.1:8b`; prompts run at temperature 0 with JSON output
+- **Model:** inference requires Ollama with `llama3.1:8b`; prompts run at temperature 0 with JSON output
 - **Checkpointing:** extraction results are saved to `outputs/llm_labels.csv`; when present, the 50-minute extraction step is skipped
 - **Evaluation:** requires the reference-label workbook `outputs/reference_labels.xlsx`, which is not reproduced by installing the dependencies
 - **Sampling:** fixed random seeds (`random_state=7` for the evaluation sample, `42` for the pilot run)
